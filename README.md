@@ -1,4 +1,4 @@
-# シューティングの基礎基礎システムのサンプル
+# シューティングの基礎基礎システムサンプル
 
 ゲーム内での動き（Youtubeに移動します）
 https://youtube.com/shorts/iw_xAy_1fd0?feature=share
