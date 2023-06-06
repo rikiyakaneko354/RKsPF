@@ -9,6 +9,7 @@ public class stageColliderPlacementScript : MonoBehaviour
     GameObject rightBoundaryObject;
     GameObject topBoundaryObject;
     GameObject bottomBoundaryObject;
+    Camera mainCamera;
     void Start()
     {
         // カメラを取得
@@ -49,7 +50,7 @@ public class stageColliderPlacementScript : MonoBehaviour
     void MoveAdjust()
     {
         // カメラを取得
-        Camera mainCamera = Camera.main;
+        mainCamera = Camera.main;
 
         // 画面の左下と右上のワールド座標を計算
         Vector3 bottomLeft = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, mainCamera.nearClipPlane));
