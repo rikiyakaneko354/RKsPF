@@ -5,6 +5,10 @@ using UnityEngine;
 public class stageColliderPlacementScript : MonoBehaviour
 {
     //画面ぎりぎりに壁を作るスクリプト
+    GameObject leftBoundaryObject;
+    GameObject rightBoundaryObject;
+    GameObject topBoundaryObject;
+    GameObject bottomBoundaryObject;
     void Start()
     {
         // カメラを取得
@@ -16,33 +20,34 @@ public class stageColliderPlacementScript : MonoBehaviour
 
         // ステージの左端にオブジェクトを設置
         Vector3 leftBoundaryPosition = new Vector3(bottomLeft.x - 2.5f, (bottomLeft.y + topRight.y) / 2f, 0f);
-        GameObject leftBoundaryObject = new GameObject("LeftBoundary");
+        leftBoundaryObject = new GameObject("LeftBoundary");
         leftBoundaryObject.transform.position = leftBoundaryPosition;
-        leftBoundaryObject.transform.localScale = new Vector3(5f, topRight.y - bottomLeft.y+5, 5f);
+        leftBoundaryObject.transform.localScale = new Vector3(5f, topRight.y - bottomLeft.y + 5, 5f);
         leftBoundaryObject.AddComponent<BoxCollider>();
 
         // ステージの右端にオブジェクトを設置
         Vector3 rightBoundaryPosition = new Vector3(topRight.x + 2.5f, (bottomLeft.y + topRight.y) / 2f, 0f);
-        GameObject rightBoundaryObject = new GameObject("RightBoundary");
+        rightBoundaryObject = new GameObject("RightBoundary");
         rightBoundaryObject.transform.position = rightBoundaryPosition;
-        rightBoundaryObject.transform.localScale = new Vector3(5f, topRight.y - bottomLeft.y+5, 5f);
+        rightBoundaryObject.transform.localScale = new Vector3(5f, topRight.y - bottomLeft.y + 5, 5f);
         rightBoundaryObject.AddComponent<BoxCollider>();
         // ステージの上壁を作成
         Vector3 topBoundaryPosition = new Vector3((bottomLeft.x + topRight.x) / 2f, topRight.y + 2.5f, 0f);
-        GameObject topBoundaryObject = new GameObject("TopBoundary");
+        topBoundaryObject = new GameObject("TopBoundary");
         topBoundaryObject.transform.position = topBoundaryPosition;
         topBoundaryObject.transform.localScale = new Vector3(topRight.x - bottomLeft.x + 5f, 5f, 5f);
         topBoundaryObject.AddComponent<BoxCollider>();
         // ステージの下壁を作成
         Vector3 bottomBoundaryPosition = new Vector3((bottomLeft.x + topRight.x) / 2f, bottomLeft.y - 2.5f, 0f);
-        GameObject bottomBoundaryObject = new GameObject("BottomBoundary");
+        bottomBoundaryObject = new GameObject("BottomBoundary");
         bottomBoundaryObject.transform.position = bottomBoundaryPosition;
         bottomBoundaryObject.transform.localScale = new Vector3(topRight.x - bottomLeft.x + 5f, 5f, 5f);
         bottomBoundaryObject.AddComponent<BoxCollider>();
 
     }
     //カメラが動いた時に画面にあわせる
-    void MoveAdjust(){
+    void MoveAdjust()
+    {
         // カメラを取得
         Camera mainCamera = Camera.main;
 
@@ -52,28 +57,25 @@ public class stageColliderPlacementScript : MonoBehaviour
 
         // ステージの左端の位置を更新
         Vector3 leftBoundaryPosition = new Vector3(bottomLeft.x - 2.5f, (bottomLeft.y + topRight.y) / 2f, 0f);
-        GameObject leftBoundaryObject = GameObject.Find("LeftBoundary");
         leftBoundaryObject.transform.position = leftBoundaryPosition;
-        leftBoundaryObject.transform.localScale = new Vector3(5f, topRight.y - bottomLeft.y+5, 5f);
+        leftBoundaryObject.transform.localScale = new Vector3(5f, topRight.y - bottomLeft.y + 5, 5f);
 
         // ステージの右端の位置を更新
         Vector3 rightBoundaryPosition = new Vector3(topRight.x + 2.5f, (bottomLeft.y + topRight.y) / 2f, 0f);
-        GameObject rightBoundaryObject = GameObject.Find("RightBoundary");
         rightBoundaryObject.transform.position = rightBoundaryPosition;
-        rightBoundaryObject.transform.localScale = new Vector3(5f, topRight.y - bottomLeft.y +5, 5f);
+        rightBoundaryObject.transform.localScale = new Vector3(5f, topRight.y - bottomLeft.y + 5, 5f);
         // ステージの上壁の位置を更新
         Vector3 topBoundaryPosition = new Vector3((bottomLeft.x + topRight.x) / 2f, topRight.y + 2.5f, 0f);
-        GameObject topBoundaryObject = GameObject.Find("TopBoundary");
         topBoundaryObject.transform.position = topBoundaryPosition;
         topBoundaryObject.transform.localScale = new Vector3(topRight.x - bottomLeft.x + 5f, 5f, 5f);
 
         // ステージの下壁の位置を更新
         Vector3 bottomBoundaryPosition = new Vector3((bottomLeft.x + topRight.x) / 2f, bottomLeft.y - 2.5f, 0f);
-        GameObject bottomBoundaryObject = GameObject.Find("BottomBoundary");
         bottomBoundaryObject.transform.position = bottomBoundaryPosition;
-        bottomBoundaryObject.transform.localScale = new Vector3(topRight.x - bottomLeft.x + 5f, 5f, 5f);  
+        bottomBoundaryObject.transform.localScale = new Vector3(topRight.x - bottomLeft.x + 5f, 5f, 5f);
     }
-    void Update(){
+    void Update()
+    {
         MoveAdjust();
 
     }
